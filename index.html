@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #payment-text {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    #dropdown-menu {
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    #dropdown-menu.show {
+      max-height: 500px; /* Adjust based on content height */
+    }
+  </style>
 </head>
 <body>
   <div id="box" style="width: 100px; height: 100px; background-color: blue;"></div>
@@ -21,55 +40,36 @@
     });
   </script>
 
-<style>
-  #payment-text {
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-
-  #dropdown-menu {
-    max-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    transition: max-height 0.3s ease-in-out;
-  }
-
-  #payment-text:hover + #dropdown-menu {
-    max-height: 500px; /* Adjust based on content height */
-  }
-</style>
-
-<div id="payment-text">Hover over me for payment options</div>
-<div id="dropdown-menu">
-  <button>Visa</button>
-  <button>MasterCard</button>
-  <button>PayPal</button>
-  <button>American Express</button>
-  <button>Discover</button>
-  <button>Bitcoin</button>
-  <button>Apple Pay</button>
-</div>
-
+  <div id="payment-text">Hover over me for payment options</div>
+  <div id="dropdown-menu">
+    <button>Visa</button>
+    <button>MasterCard</button>
+    <button>PayPal</button>
+    <button>American Express</button>
+    <button>Discover</button>
+    <button>Bitcoin</button>
+    <button>Apple Pay</button>
+  </div>
 
   <script>
-    document.getElementById('payment-text').addEventListener('mouseover', function() {
-      document.getElementById('dropdown-menu').style.display = 'block';
+    const paymentText = document.getElementById('payment-text');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    paymentText.addEventListener('mouseover', function() {
+      dropdownMenu.classList.add('show');
     });
 
-    document.getElementById('payment-text').addEventListener('mouseout', function() {
-      document.getElementById('dropdown-menu').style.display = 'none';
+    paymentText.addEventListener('mouseout', function() {
+      dropdownMenu.classList.remove('show');
     });
 
-    document.getElementById('dropdown-menu').addEventListener('mouseover', function() {
-      this.style.display = 'block';
+    dropdownMenu.addEventListener('mouseover', function() {
+      this.classList.add('show');
     });
 
-    document.getElementById('dropdown-menu').addEventListener('mouseout', function() {
-      this.style.display = 'none';
+    dropdownMenu.addEventListener('mouseout', function() {
+      this.classList.remove('show');
     });
   </script>
-    
 </body>
 </html>
