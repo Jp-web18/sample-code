@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" style="width: 100px; height: 100px; background-color: blue;"></div>
+  <script>
+    document.getElementById('box').addEventListener('mouseover', function() {
+      this.style.transition = 'width 0.5s, height 0.5s';
+      this.style.width = '200px';
+      this.style.height = '200px';
+    });
+
+    document.getElementById('box').addEventListener('mouseout', function() {
+      this.style.transition = 'width 0.5s, height 0.5s';
+      this.style.width = '100px';
+      this.style.height = '100px';
+    });
+  </script>
+
+<style>
+  #payment-text {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  #dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  #payment-text:hover + #dropdown-menu {
+    max-height: 500px; /* Adjust based on content height */
+  }
+</style>
+
+<div id="payment-text">Hover over me for payment options</div>
+<div id="dropdown-menu">
+  <button>Visa</button>
+  <button>MasterCard</button>
+  <button>PayPal</button>
+  <button>American Express</button>
+  <button>Discover</button>
+  <button>Bitcoin</button>
+  <button>Apple Pay</button>
+</div>
+
+
+  <script>
+    document.getElementById('payment-text').addEventListener('mouseover', function() {
+      document.getElementById('dropdown-menu').style.display = 'block';
+    });
+
+    document.getElementById('payment-text').addEventListener('mouseout', function() {
+      document.getElementById('dropdown-menu').style.display = 'none';
+    });
+
+    document.getElementById('dropdown-menu').addEventListener('mouseover', function() {
+      this.style.display = 'block';
+    });
+
+    document.getElementById('dropdown-menu').addEventListener('mouseout', function() {
+      this.style.display = 'none';
+    });
+  </script>
+    
+</body>
+</html>
